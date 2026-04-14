@@ -24,6 +24,13 @@ const CATEGORIES = [
     accentFrom: '#4F46E5',
     accentTo: '#00E5FF',
   },
+  {
+    title: 'Cloud & Infrastructure',
+    icon: '☁️',
+    skills: ['Nutanix AOS 6 (NCA)', 'Hyper-Converged Infra', 'AWS EC2', 'Linux'],
+    accentFrom: '#7C3AED',
+    accentTo: '#EC4899',
+  },
 ];
 
 export default function SkillsSection() {
@@ -44,7 +51,7 @@ export default function SkillsSection() {
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {CATEGORIES.map((cat, ci) => (
             <motion.div
               key={cat.title}

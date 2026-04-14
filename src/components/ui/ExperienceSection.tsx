@@ -17,6 +17,20 @@ const EXPERIENCES = [
       'Pursuing B.E. in Computer Science (Data Science) at BMS College of Engineering, Bangalore. Focused on Machine Learning, Data Science, and Distributed Systems.',
   },
   {
+    id: 'nca',
+    type: 'Certification',
+    title: 'Nutanix Certified Associate (NCA) 6',
+    subtitle: 'Nutanix — Credly Verified Badge',
+    period: '2026 – 2029',
+    details: [
+      { label: 'Valid Until', value: '2029' },
+      { label: 'Domain', value: 'Cloud Infrastructure' },
+    ],
+    description:
+      'Earned the Nutanix Certified Associate (NCA) 6 credential, demonstrating hands-on proficiency in navigating a Nutanix AOS 6.x cluster, managing core Nutanix offerings, and operating hyper-converged infrastructure at scale.',
+    link: 'https://www.credly.com/badges/1da9e455-584f-496a-923d-5b046ecc55be/public_url',
+  },
+  {
     id: 'csir',
     type: 'Workshop',
     title: 'CSIR-4PI Workshop',
@@ -117,6 +131,36 @@ export default function ExperienceSection() {
                   <p className="text-text-secondary text-sm leading-relaxed">
                     {exp.description}
                   </p>
+
+                  {/* Badge / Credential link */}
+                  {'link' in exp && exp.link && (
+                    <a
+                      href={exp.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 mt-4 text-xs font-medium px-3 py-1.5 rounded-lg transition-all duration-300"
+                      style={{
+                        background: 'rgba(124,58,237,0.08)',
+                        border: '1px solid rgba(124,58,237,0.25)',
+                        color: '#A78BFA',
+                      }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(124,58,237,0.18)';
+                        (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(124,58,237,0.5)';
+                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 0 15px rgba(124,58,237,0.2)';
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(124,58,237,0.08)';
+                        (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(124,58,237,0.25)';
+                        (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none';
+                      }}
+                    >
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                      </svg>
+                      View Credly Badge
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}
