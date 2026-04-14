@@ -4,7 +4,6 @@ import HeroSection from '@/components/ui/HeroSection';
 import SkillsSection from '@/components/ui/SkillsSection';
 import ProjectsSection from '@/components/ui/ProjectsSection';
 import ExperienceSection from '@/components/ui/ExperienceSection';
-import InspirationSection from '@/components/ui/InspirationSection';
 import ContactSection from '@/components/ui/ContactSection';
 
 export default function Home() {
@@ -52,7 +51,6 @@ export default function Home() {
         <SkillsSection />
         <ProjectsSection />
         <ExperienceSection />
-        <InspirationSection />
         <ContactSection />
       </main>
     </>

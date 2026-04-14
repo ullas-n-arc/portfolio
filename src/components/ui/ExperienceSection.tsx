@@ -64,7 +64,7 @@ export default function ExperienceSection() {
         {/* Timeline */}
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-4 md:left-6 top-0 bottom-0 w-px bg-card-border" />
+          <div className="absolute left-4 md:left-6 top-0 bottom-0 w-px" style={{ background: 'linear-gradient(180deg, rgba(0,229,255,0.5) 0%, rgba(124,58,237,0.5) 50%, rgba(0,229,255,0.2) 100%)' }} />
 
           <div className="space-y-8">
             {EXPERIENCES.map((exp, i) => (
@@ -78,8 +78,15 @@ export default function ExperienceSection() {
               >
                 {/* Timeline dot */}
                 <div
-                  className="absolute left-4 md:left-6 w-2.5 h-2.5 rounded-full bg-mana-blue -translate-x-1/2 top-2"
-                  style={{ boxShadow: '0 0 8px rgba(0,229,255,0.4)' }}
+                  className="absolute left-4 md:left-6 w-3 h-3 rounded-full -translate-x-1/2 top-1.5"
+                  style={{
+                    background: i % 2 === 0
+                      ? 'linear-gradient(135deg, #00E5FF, #7C3AED)'
+                      : 'linear-gradient(135deg, #7C3AED, #00E5FF)',
+                    boxShadow: i % 2 === 0
+                      ? '0 0 10px rgba(0,229,255,0.5), 0 0 20px rgba(0,229,255,0.2)'
+                      : '0 0 10px rgba(124,58,237,0.5), 0 0 20px rgba(124,58,237,0.2)',
+                  }}
                 />
 
                 {/* Card */}

@@ -75,9 +75,10 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.65 }}
           className="text-text-secondary text-base md:text-lg leading-relaxed md:leading-loose mb-3 max-w-lg mx-auto"
         >
-          Computer Science -Data science  student at BMS College of Engineering, Bangalore.
+          Computer Science — Data Science student at BMS College of Engineering, Bangalore.
           Focused on building end-to-end ML pipelines, real-time data systems,
           and turning raw data into actionable insights.
+          A passionate gamer at heart — games taught me logic, exploration, and never giving up.
         </motion.p>
 
         {/* Tagline */}

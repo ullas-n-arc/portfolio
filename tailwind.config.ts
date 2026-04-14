@@ -9,18 +9,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'midnight-deep': '#03040B',
-        'midnight-core': '#0B1021',
-        'midnight-surface': '#111827',
+        'midnight-deep': '#020309',
+        'midnight-core': '#08102A',
+        'midnight-surface': '#0F1C3A',
         'mana-blue': '#00E5FF',
-        'mana-light': '#00F0FF',
+        'mana-light': '#33EEFF',
         'mana-dark': '#00B8D4',
-        'text-primary': '#FFFFFF',
-        'text-secondary': '#A0AEC0',
-        'text-muted': '#5A6A7A',
-        'card-bg': '#111827',
-        'card-border': '#1E293B',
-        'card-hover': '#1A2332',
+        'mana-purple': '#7C3AED',
+        'mana-violet': '#4F46E5',
+        'mana-lavender': '#A78BFA',
+        'text-primary': '#F0F6FF',
+        'text-secondary': '#94AAC8',
+        'text-muted': '#4A5E7A',
+        'card-bg': '#0D1B35',
+        'card-border': '#1A2E52',
+        'card-hover': '#112040',
+
+        // HUD / game theme (keep existing)
+        'cavern': '#06080F',
+        'hud-border': '#1E3A5F',
+        'xp-green': '#22c55e',
+        'energy-gold': '#F59E0B',
+        'sword-silver': '#94A3B8',
+        'magic-glow': '#67E8F9',
       },
       fontFamily: {
         'heading': ['Inter', 'system-ui', 'sans-serif'],
@@ -30,6 +41,7 @@ const config: Config = {
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',
         'slide-up': 'slideUp 0.5s ease-out',
+        'glow-pulse': 'glowPulse 3s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -39,6 +51,10 @@ const config: Config = {
         slideUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        glowPulse: {
+          '0%, 100%': { boxShadow: '0 0 10px rgba(0,229,255,0.2)' },
+          '50%': { boxShadow: '0 0 25px rgba(0,229,255,0.5), 0 0 50px rgba(124,58,237,0.2)' },
         },
       },
     },

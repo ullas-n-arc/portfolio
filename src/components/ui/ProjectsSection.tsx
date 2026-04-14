@@ -18,10 +18,11 @@ const PROJECTS = [
     stack: ['Python', 'PySpark', 'Apache Kafka', 'Random Forest', 'GBT', 'MongoDB'],
     link: 'https://github.com/ullas-n-arc/real-time-network-intrusion-detection-spark-kafka',
     featured: true,
+    accentColor: '#00E5FF',
   },
   {
     id: 'civic',
-    title: 'Geo-Spatial Civic App',
+    title: ' LOCAL CONNECT - Geo-Spatial Civic App',
     subtitle: 'Android · Firebase · OpenStreetMap',
     description:
       'Android application with Firebase authentication, Firestore database, and OpenStreetMap integration for geo-spatial civic issue reporting and community engagement.',
@@ -33,6 +34,7 @@ const PROJECTS = [
     stack: ['Android', 'Firebase', 'Firestore', 'OpenStreetMap', 'Java'],
     link: 'https://github.com/Sushanth-25/Local_Connect',
     featured: false,
+    accentColor: '#7C3AED',
   },
   {
     id: 'traffic',
@@ -48,6 +50,7 @@ const PROJECTS = [
     stack: ['LangFlow', 'IBM Granite', 'RAG', 'Python', 'watsonx.ai'],
     link: 'https://github.com/Sushanth-25/Traffic_Congestion_Agent',
     featured: false,
+    accentColor: '#06B6D4',
   },
   {
     id: 'fakenews',
@@ -63,6 +66,7 @@ const PROJECTS = [
     stack: ['Python', 'TensorFlow', 'LIME', 'NLP', 'Jupyter'],
     link: 'https://github.com/ullas-n-arc/fake-news-detection-lstm',
     featured: false,
+    accentColor: '#10B981',
   },
   {
     id: 'life-expectancy',
@@ -78,6 +82,39 @@ const PROJECTS = [
     stack: ['Python', 'Pandas', 'Matplotlib', 'Scikit-learn', 'Jupyter'],
     link: 'https://github.com/ullas-n-arc/Life-Expectancy-Analysis',
     featured: false,
+    accentColor: '#F59E0B',
+  },
+  {
+    id: 'irctc',
+    title: 'IRCTC Booking Simulation',
+    subtitle: 'Java CLI · OOP Design',
+    description:
+      'A Java-based command-line simulation of the IRCTC railway booking system. Features complete user authentication (signup/login), train search, ticket booking, and cancellation flows — demonstrating robust OOP principles and real-world system design.',
+    highlights: [
+      { label: 'Language', value: 'Java' },
+      { label: 'Pattern', value: 'OOP Design' },
+      { label: 'Interface', value: 'CLI' },
+    ],
+    stack: ['Java', 'OOP', 'Collections', 'File I/O'],
+    link: 'https://github.com/ullas-n-arc/IRCTC',
+    featured: false,
+    accentColor: '#EF4444',
+  },
+  {
+    id: 'javachat',
+    title: 'Java Chat Application',
+    subtitle: 'Real-Time Messaging · Socket Programming',
+    description:
+      'A multi-client chat application built with Java socket programming. Supports real-time bidirectional messaging between multiple clients through a central server, demonstrating networking fundamentals, concurrency, and thread-safe communication.',
+    highlights: [
+      { label: 'Language', value: 'Java' },
+      { label: 'Tech', value: 'Sockets' },
+      { label: 'Pattern', value: 'Multi-threaded' },
+    ],
+    stack: ['Java', 'Socket Programming', 'Multithreading', 'Networking'],
+    link: 'https://github.com/ullas-n-arc/JavaChatApp',
+    featured: false,
+    accentColor: '#8B5CF6',
   },
 ];
 
@@ -105,25 +142,47 @@ export default function ProjectsSection() {
           {PROJECTS.map((proj, i) => (
             <motion.div
               key={proj.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
-              className={`card cursor-pointer ${
-                proj.featured ? 'border-mana-blue/30' : ''
-              }`}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ delay: i * 0.06, duration: 0.55, ease: [0.25, 0.4, 0.25, 1] }}
+              className={`project-card cursor-pointer ${proj.featured ? 'featured-card' : ''
+                }`}
+              style={{
+                '--card-accent': proj.accentColor,
+              } as React.CSSProperties}
               onClick={() => setExpanded(expanded === proj.id ? null : proj.id)}
+              whileHover={{ y: -3 }}
             >
               <div className="p-5 md:p-6">
+                {/* Shimmer line on top */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-px project-shimmer"
+                  style={{
+                    background: `linear-gradient(90deg, transparent, ${proj.accentColor}50, transparent)`,
+                  }}
+                />
+
                 {/* Header row */}
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       {proj.featured && (
-                        <span className="text-[10px] font-semibold uppercase tracking-wider text-mana-blue bg-mana-blue/10 px-2 py-0.5 rounded">
+                        <span
+                          className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded"
+                          style={{
+                            color: proj.accentColor,
+                            background: `${proj.accentColor}15`,
+                            border: `1px solid ${proj.accentColor}30`,
+                          }}
+                        >
                           Featured
                         </span>
                       )}
+                      <span
+                        className="w-2 h-2 rounded-full opacity-60"
+                        style={{ background: proj.accentColor }}
+                      />
                     </div>
                     <h3 className="text-lg font-semibold text-text-primary">
                       {proj.title}
@@ -132,6 +191,7 @@ export default function ProjectsSection() {
                   </div>
                   <motion.div
                     animate={{ rotate: expanded === proj.id ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
                     className="text-text-muted text-sm mt-1 flex-shrink-0"
                   >
                     ▾
@@ -146,7 +206,9 @@ export default function ProjectsSection() {
                       className="text-xs bg-card-bg border border-card-border rounded-md px-2.5 py-1"
                     >
                       <span className="text-text-muted">{h.label}: </span>
-                      <span className="text-mana-light font-medium">{h.value}</span>
+                      <span className="font-medium" style={{ color: proj.accentColor }}>
+                        {h.value}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -159,7 +221,7 @@ export default function ProjectsSection() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
                     className="overflow-hidden"
                   >
                     <div className="px-5 md:px-6 pb-5 md:pb-6 border-t border-card-border pt-4">
@@ -178,6 +240,10 @@ export default function ProjectsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn-primary text-sm"
+                        style={{
+                          color: proj.accentColor,
+                          borderColor: `${proj.accentColor}40`,
+                        }}
                         onClick={(e) => e.stopPropagation()}
                       >
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
